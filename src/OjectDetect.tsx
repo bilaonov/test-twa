@@ -53,11 +53,24 @@ const ObjectDetection = () => {
     <div className="container">
       <div className="video-container">
         <video ref={videoRef} style={{ width: '400px', height: '320px' }} autoPlay />
+        {predictions.map((prediction, index) => {
+          const [x, y] = prediction.bbox;
+          return (
+            <div
+              key={index}
+              className="prediction-box"
+              style={{
+                left: `${x}px`,
+                top: `${y}px`,
+                width: `380px`,
+                height: `280px`,
+              }}
+            >
+              <span className="prediction-text">{prediction.class}</span>
+            </div>
+          );
+        })}
       </div>
-      {predictions.map(item => (
-        <div>{item.class}</div>
-      ))}
-      test
     </div>
   );
 };
