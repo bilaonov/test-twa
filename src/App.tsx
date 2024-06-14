@@ -2,6 +2,7 @@ import './App.css';
 import { TonConnectButton } from '@tonconnect/ui-react';
 import { useTonConnect } from './Hooks/useTonConnect';
 import { useCounterContract } from './Hooks/useCounterContract';
+import ObjectDetection from './OjectDetect';
 
 function App() {
   const { connected } = useTonConnect();
@@ -11,7 +12,7 @@ function App() {
     <div className="App">
       <div className="Container">
         <TonConnectButton />
-
+        <ObjectDetection />
         <div className="Card">
           <b>Counter Address</b>
           <div className="Hint">{address?.slice(0, 30) + '...'}</div>
@@ -23,7 +24,7 @@ function App() {
         </div>
 
         <a
-          className={`Button ${connected ? 'Active' : 'Disabled'}`}
+          className={`Button ${connected ? 'Actives' : 'Disabled'}`}
           onClick={() => {
             sendIncrement();
           }}
