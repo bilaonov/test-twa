@@ -14,7 +14,7 @@ const ObjectDetection = () => {
       const loadedModel = await cocoSsd.load();
       setModel(loadedModel);
     };
-    
+
     loadModel();
   }, []);
 
@@ -49,13 +49,13 @@ const ObjectDetection = () => {
   const drawPredictions = predictions => {
     const ctx = canvasRef.current.getContext('2d');
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    
+
     predictions.forEach(prediction => {
       const [x, y, width, height] = prediction.bbox;
       ctx.strokeStyle = '#00FFFF';
       ctx.lineWidth = 2;
       ctx.strokeRect(x, y, width, height);
-      
+
       ctx.font = '18px Arial';
       ctx.fillStyle = '#00FFFF';
       ctx.fillText(prediction.class, x, y > 10 ? y - 5 : 10);
@@ -65,16 +65,8 @@ const ObjectDetection = () => {
   return (
     <div className="container">
       <div className="video-container">
-        <video
-          ref={videoRef}
-          style={{ width: '320px', height: '280px' }}
-          autoPlay
-        />
-        <canvas
-          ref={canvasRef}
-          width="300"
-          height="200"
-        />
+        <video ref={videoRef} style={{ width: '400px', height: '320px' }} autoPlay />
+        <canvas ref={canvasRef} width="400px" height="320px" />
       </div>
     </div>
   );
