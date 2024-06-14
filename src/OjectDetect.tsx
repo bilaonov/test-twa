@@ -2,11 +2,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
+import './App.css'; // Подключение файла стилей
 
 const ObjectDetection = () => {
   const videoRef = useRef(null);
-  const canvasRef = useRef(null);
   const [model, setModel] = useState(null);
+  const [predictions, setPredictions] = useState([]);
 
   useEffect(() => {
     // Загрузка модели COCO-SSD
@@ -37,7 +38,7 @@ const ObjectDetection = () => {
     const detectFrame = async () => {
       if (videoRef.current && model) {
         const predictions = await model.detect(videoRef.current);
-        drawPredictions(predictions);
+        setPredictions(predictions);
 
         requestAnimationFrame(detectFrame);
       }
@@ -46,27 +47,15 @@ const ObjectDetection = () => {
     detectFrame();
   }, [model]);
 
-  const drawPredictions = predictions => {
-    const ctx = canvasRef.current.getContext('2d');
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-    predictions.forEach(prediction => {
-      const [x, y, width, height] = prediction.bbox;
-      ctx.strokeStyle = '#00FFFF';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(x, y, width, height);
-
-      ctx.font = '18px Arial';
-      ctx.fillStyle = '#00FFFF';
-      ctx.fillText(prediction.class, x, y > 10 ? y - 5 : 10);
-    });
-  };
+  console.log(predictions);
 
   return (
     <div className="container">
+      {predictions.map(item => (
+        <div>{item.class}</div>
+      ))}
       <div className="video-container">
         <video ref={videoRef} style={{ width: '400px', height: '320px' }} autoPlay />
-        <canvas ref={canvasRef} width="400px" height="320px" />
       </div>
     </div>
   );
