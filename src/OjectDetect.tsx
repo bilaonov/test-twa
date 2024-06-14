@@ -67,13 +67,13 @@ const ObjectDetection = () => {
       <div className="video-container">
         <video
           ref={videoRef}
-          style={{ width: '640px', height: '480px' }}
+          style={{ width: '320px', height: '280px' }}
           autoPlay
         />
         <canvas
           ref={canvasRef}
-          width="640"
-          height="480"
+          width="300"
+          height="200"
         />
       </div>
     </div>
