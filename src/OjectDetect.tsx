@@ -51,12 +51,13 @@ const ObjectDetection = () => {
 
   return (
     <div className="container">
-      {predictions.map(item => (
-        <div>{item.class}</div>
-      ))}
       <div className="video-container">
         <video ref={videoRef} style={{ width: '400px', height: '320px' }} autoPlay />
       </div>
+      {predictions.map(item => (
+        <div>{item.class}</div>
+      ))}
+      test
     </div>
   );
 };
