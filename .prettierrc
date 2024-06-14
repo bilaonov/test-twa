@@ -1,0 +1,21 @@
+{
+  "printWidth": 110,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "semi": true,
+  "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "arrowParens": "avoid",
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators"],
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.html"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}
