@@ -3,6 +3,7 @@ import './App.css';
 // import { useTonConnect } from './Hooks/useTonConnect';
 // import { useCounterContract } from './Hooks/useCounterContract';
 import ObjectDetection from './OjectDetect';
+import StepCounter from './Step';
 
 function App() {
   // const { connected } = useTonConnect();
@@ -11,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="Container">
+        <StepCounter />
         <ObjectDetection />
       </div>
     </div>
