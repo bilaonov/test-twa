@@ -20,6 +20,7 @@
     "@twa-dev/sdk": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-webcam": "^7.2.0",
     "vite-plugin-node-polyfills": "^0.22.0"
   },
   "devDependencies": {
