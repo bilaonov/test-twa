@@ -46,6 +46,9 @@ const ObjectDetection = () => {
           ref={webcamRef}
           audio={false}
           style={{ width: '400px', height: '320px' }}
+          videoConstraints={{
+            facingMode: { exact: "environment" }
+          }}
         />
         {predictions.map((prediction, index) => {
           const [x, y, width, height] = prediction.bbox;
