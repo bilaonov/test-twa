@@ -3,7 +3,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
-import './App.css'; // Подключение файла стилей
 
 const ObjectDetection = () => {
   const webcamRef = useRef(null);
@@ -37,8 +36,6 @@ const ObjectDetection = () => {
     }
   }, [model]);
 
-  console.log(predictions);
-
   return (
     <div className="container">
       <div className="video-container">
@@ -47,9 +44,10 @@ const ObjectDetection = () => {
           audio={false}
           style={{ width: '400px', height: '320px' }}
           videoConstraints={{
-            facingMode: { exact: "environment" }
+            facingMode: { exact: 'environment' },
           }}
         />
+
         {predictions.map((prediction, index) => {
           const [x, y, width, height] = prediction.bbox;
           return (

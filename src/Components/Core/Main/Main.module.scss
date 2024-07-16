@@ -1,0 +1,67 @@
+.container {
+  padding: 10px;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.items {
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+
+.find-box {
+  border-radius: 20px;
+  width: 100%;
+  height: 258px;
+  background-color: #06060667;
+  border: solid 1px var(--white);
+}
+
+.find-items {
+  padding: 10px;
+}
+
+.find-card {
+  justify-content: space-between;
+  padding: 10px 18px;
+  display: flex;
+}
+
+.card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-text,
+.reward {
+  text-align: center;
+}
+
+.reward {
+  color: var(--yellow);
+}
+
+.checkbox {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.button {
+  width: 325px;
+  display: flex;
+  margin: 20px auto;
+  align-items: center;
+  border-radius: 20px;
+  background-color: var(--yellow);
+  justify-content: center;
+  cursor: pointer;
+
+  height: 70px;
+  &:hover {
+    color: var(--white);
+    background-color: #83900a;
+  }
+}
