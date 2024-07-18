@@ -4,9 +4,44 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .nerko-one {
   font-family: var(--nerko-one);
+}
+
+.full-screen-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Убедитесь, что контейнер отображается поверх других элементов */
+}
+
+.full-screen-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Сохраняет соотношение сторон видео */
+}
+
+.prediction-box {
+  position: absolute;
+  border: 2px solid red;
+  pointer-events: none;
+}
+
+.prediction-text {
+  color: white;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
