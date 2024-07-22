@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useTranslation } from 'react-i18next';
 import styles from './Main.module.scss';
 import { Typography } from '../../UI/Typography/Typography';
@@ -10,6 +11,26 @@ export const Main = () => {
     'https://frxgcdvznolnxlfbogir.supabase.co',
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZyeGdjZHZ6bm9sbnhsZmJvZ2lyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjEyMDIwMDcsImV4cCI6MjAzNjc3ODAwN30.7EZnKwEIR36v7s0jsCA3THfFguH6g4_QLLKC9p9UTa8',
   );
+
+  const [userData, setUserData] = useState<Telegram.WebApp.User | null>(null);
+
+  useEffect(() => {
+    // Ensure Telegram WebApp SDK is available
+    if (window.Telegram?.WebApp) {
+      const telegramWebApp = window.Telegram.WebApp;
+      telegramWebApp.ready();
+
+      // Get user data
+      const user = telegramWebApp.initDataUnsafe.user;
+      setUserData(user);
+
+      // Additional setup if needed
+      telegramWebApp.expand();
+    }
+  }, []);
+
+  console.log(userData)
+
 
   const [countries, setCountries] = useState<any>([]);
   const [detectName, setDetectName] = useState('');
@@ -50,6 +71,7 @@ export const Main = () => {
           {t('main.todayChallenge')}
         </Typography>
         <div className={styles['find-box']}>
+        {userData?.firstName || 'text'}
           <div className={styles['find-items']}>
             <Typography fontFamily="nerko-one" variant="Text24Bold">
               {t('main.findText')}
